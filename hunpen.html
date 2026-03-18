@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hun Pen | Artistic Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Montserrat:wght@200;400;700&display=swap');
+        
+        :root {
+            --bg: #faf9f6;
+            --text: #1a1a1a;
+            --accent: #c5a059;
+            --border: rgba(26, 26, 26, 0.1);
+            --card-bg: #faf9f6;
+            --hero-outline: #1a1a1a;
+        }
+
+        [data-theme='dark'] {
+            --bg: #0a0a0a;
+            --text: #f0f0f0;
+            --accent: #d4af37;
+            --border: rgba(255, 255, 255, 0.1);
+            --card-bg: #121212;
+            --hero-outline: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .serif { font-family: 'Bodoni Moda', serif; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .outline-text {
+            -webkit-text-stroke: 1px var(--hero-outline);
+            color: transparent;
+            transition: -webkit-text-stroke 0.5s ease;
+        }
+
+        .gallery-border {
+            border: 1px solid var(--border);
+            transition: border 0.5s ease;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-item::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        /* Toggle Switch Styling */
+        .theme-toggle {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        .theme-toggle:hover {
+            background: var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased" data-theme="light">
+
+    <!-- Minimal Sidebar Nav -->
+    <nav class="fixed left-0 top-0 h-full w-16 md:w-24 border-r gallery-border z-50 bg-inherit flex flex-col items-center py-12">
+        <div class="vertical-text uppercase tracking-[0.5em] text-[10px] font-bold mb-auto opacity-50">
+            Hun Pen — Archive 2026
+        </div>
+        
+        <!-- Theme Toggle Button -->
+        <div class="mb-12 theme-toggle" onclick="toggleTheme()" id="toggleBtn">
+            <svg id="sun-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg id="moon-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </div>
+
+        <div class="flex flex-col space-y-8 text-[10px] font-bold uppercase tracking-widest">
+            <a href="#about" class="nav-item">Bio</a>
+            <a href="#works" class="nav-item">Works</a>
+            <a href="#office" class="nav-item">Office</a>
+            <a href="#contact" class="nav-item">End</a>
+        </div>
+    </nav>
+
+    <main class="ml-16 md:ml-24">
+        
+        <!-- Hero: The Statement -->
+        <section class="min-h-screen flex flex-col justify-center px-8 md:px-24 border-b gallery-border">
+            <div class="reveal">
+                <h2 class="serif italic text-2xl md:text-4xl mb-4 text-[#c5a059]">Choreographer & Scholar</h2>
+                <h1 class="serif text-7xl md:text-[12vw] leading-[0.85] font-bold uppercase tracking-tighter mb-12">
+                    Hun <br> <span class="outline-text">Pen.</span>
+                </h1>
+                <div class="max-w-md ml-auto md:mr-24">
+                    <p class="text-sm md:text-base leading-loose font-light border-l-2 border-[#c5a059] pl-6 py-2">
+                        Defining the intersection of classical Khmer heritage and avant-garde movement. 
+                        A life dedicated to the revival of the Neang role and the evolution of the Performing Arts.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Biography: The Timeline as Art -->
+        <section id="about" class="py-32 px-8 md:px-24 grid md:grid-cols-12 gap-12 border-b gallery-border">
+            <div class="md:col-span-4 reveal">
+                <h3 class="serif text-5xl italic font-bold mb-12">The <br>Origin</h3>
+            </div>
+            <div class="md:col-span-8 space-y-24 reveal">
+                <div class="gallery-border p-12 relative bg-inherit">
+                    <span class="absolute -top-4 left-6 bg-inherit px-4 font-bold tracking-widest text-xs italic text-[#c5a059]">1990 — PHNOM PENH</span>
+                    <h4 class="serif text-3xl mb-4 italic">The Royal University of Fine Arts</h4>
+                    <p class="text-sm leading-relaxed opacity-70">
+                        Formal initiation into the classical arts. Specialization in the Neang (female) role under the guidance of the kingdom's masters. A period of rigorous preservation and technical perfection.
+                    </p>
+                </div>
+
+                <div class="gallery-border p-12 relative ml-0 md:ml-12 border-l-4 border-l-[#c5a059] bg-inherit">
+                    <span class="absolute -top-4 left-6 bg-inherit px-4 font-bold tracking-widest text-xs italic text-[#c5a059]">2002-2008 — GLOBAL PERSPECTIVE</span>
+                    <h4 class="serif text-3xl mb-4 italic">Fellowships & Academia</h4>
+                    <p class="text-sm leading-relaxed opacity-70">
+                        Expansion to Wesleyan University (USA) via the Asian Cultural Council. Master’s research at Chulalongkorn University focused on the post-1979 cultural revival. A synthesis of tradition and scholarly inquiry.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Works: Editorial Layout -->
+        <section id="works" class="py-32 border-b gallery-border">
+            <div class="px-8 md:px-24 mb-24">
+                <h2 class="serif text-6xl md:text-9xl font-bold uppercase tracking-tighter opacity-10 leading-none">Selected Works</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-px bg-inherit reveal">
+                <div class="p-12 md:p-24 border gallery-border bg-inherit">
+                    <span class="text-[10px] font-bold tracking-[0.4em] uppercase opacity-50 mb-4 block">Choreography // 2015</span>
+                    <h3 class="serif text-4xl mb-6">The Krud Dance <br>(Garuda)</h3>
+                    <p class="text-sm font-light leading-relaxed mb-8 opacity-70">
+                        A landmark piece merging the soaring weightlessness of classical motifs with the visceral impact of contemporary dance. Premiered on a national stage to critical acclaim.
+                    </p>
+                    <div class="w-12 h-[1px] bg-[#c5a059]"></div>
+                </div>
+                
+                <div class="p-12 md:p-24 border gallery-border bg-inherit">
+                    <span class="text-[10px] font-bold tracking-[0.4em] uppercase opacity-50 mb-4 block">Movement // 2021</span>
+                    <h3 class="serif text-4xl mb-6">One Voice <br>Project</h3>
+                    <p class="text-sm font-light leading-relaxed mb-8 opacity-70">
+                        Founder of the (សំឡេងខ្មែរតែមួយ) arts peace movement. A collective effort to unify artistic voices across Cambodia through visionary performance.
+                    </p>
+                    <div class="w-12 h-[1px] bg-[#c5a059]"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Office: Institutional Leadership -->
+        <section id="office" class="py-32 px-8 md:px-24 flex flex-col md:flex-row items-end border-b gallery-border bg-zinc-900 text-white">
+            <div class="md:w-1/2 mb-12 md:mb-0 reveal">
+                <h2 class="serif text-5xl md:text-7xl font-bold mb-8">Public Service <br>& Stewardship</h2>
+                <div class="h-1 w-24 bg-[#c5a059]"></div>
+            </div>
+            <div class="md:w-1/2 reveal">
+                <h3 class="serif text-3xl italic mb-6 text-[#c5a059]">Ministry of Culture and Fine Arts</h3>
+                <p class="text-gray-400 text-sm md:text-base leading-loose uppercase tracking-widest font-bold border-b border-gray-800 pb-4 mb-4">
+                    Deputy Director
+                </p>
+                <p class="text-gray-500 text-sm leading-relaxed italic">
+                    Department of Performing Arts. Responsible for the safeguarding of cultural heritage, the documentation of endangered forms, and the strategic leadership of the national performing arts infrastructure.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact: Minimalist Footer -->
+        <footer id="contact" class="py-24 px-8 md:px-24 text-center md:text-left">
+            <div class="grid md:grid-cols-3 gap-12 items-center reveal">
+                <div>
+                    <h4 class="serif text-2xl italic mb-2">Connect</h4>
+                    <p class="text-[10px] uppercase tracking-widest font-bold opacity-40">Phnom Penh, Kingdom of Cambodia</p>
+                </div>
+                <div class="flex flex-col md:items-center space-y-4 text-xs font-bold uppercase tracking-[0.3em]">
+                    <a href="#" class="hover:text-[#c5a059] transition">Telegram</a>
+                    <a href="#" class="hover:text-[#c5a059] transition">LinkedIn</a>
+                    <a href="#" class="hover:text-[#c5a059] transition">Instagram</a>
+                </div>
+                <div class="md:text-right">
+                    <div class="serif text-4xl font-bold uppercase tracking-tighter">Hun Pen</div>
+                    <p class="text-[8px] uppercase tracking-[0.5em] opacity-40 mt-2">© 2026 Artistic Archive. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+            
+            // Toggle Icons
+            document.getElementById('sun-icon').classList.toggle('hidden');
+            document.getElementById('moon-icon').classList.toggle('hidden');
+        }
+
+        // Scroll Reveal Implementation
+        const handleScroll = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+    </script>
+</body>
+</html>
